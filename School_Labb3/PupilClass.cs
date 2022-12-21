@@ -36,13 +36,13 @@ namespace School_Labb3
                 Console.WriteLine(new string('-', 18));
                 Console.ResetColor();
                 Console.WriteLine();
-                Console.WriteLine("Select 1, 2 or 3.");
+                Console.WriteLine("Select 1, 2, 3 or 4.");
                 bool IdContinue = true;
                 while (IdContinue)
                 {
                     var classinput = Console.ReadLine(); //reads input from user
                     int getClassId = 0;
-                    if (Int32.TryParse(classinput, out getClassId) && getClassId >= 1 && getClassId <= 3)
+                    if (Int32.TryParse(classinput, out getClassId) && getClassId >= 1 && getClassId <= 4)
                     {
                         IdContinue = false;
                         //Gets student by class
@@ -75,7 +75,7 @@ namespace School_Labb3
                 SeeOtherClass();
             }
         }
-        public void SeeOtherClass()
+        private void SeeOtherClass()
         {
             Menu menu = new Menu();
             Console.ForegroundColor = ConsoleColor.DarkGray;

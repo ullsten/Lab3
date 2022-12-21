@@ -137,7 +137,6 @@ namespace School_Labb3
                 }
                 while (!checkGender);
                 var avgGradeGender = (from e in context.Exams
-                                          //join co in context.Courses on e.FkCourseId equals co.CourseId
                                       join g in context.Grades on e.FkGradeId equals g.GradeId
                                       join s in context.Students on e.FkStudentId equals s.StudentId
                                       join c in context.Classes on s.FkClassId equals c.ClassId
@@ -151,7 +150,7 @@ namespace School_Labb3
                 AgeGroupAgain();
             }
         }
-        public void ShowAgeGroup()
+        private void ShowAgeGroup()
         {
             using (var context = new SchoolContext())
             {
@@ -173,7 +172,7 @@ namespace School_Labb3
                 Console.ResetColor();
             }      
         }
-        public void AgeGroupAgain()
+        private void AgeGroupAgain()
         {
             Menu menu = new Menu();
             Console.WriteLine("See another age group? [Y/N]");

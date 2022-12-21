@@ -12,7 +12,7 @@ namespace School_Labb3
     
     public class Validate
     {
-        public void SsnValidateDatabase() //Validate students social security number
+        public void SsnValidateDatabase() //Validate students social security number //Not in use
         {
             using (var context = new SchoolContext())
             {
@@ -44,7 +44,7 @@ namespace School_Labb3
                 }
             }
         }
-        public string ValidateSsn(out string ssn) //Validate social security number for new student
+        public string ValidateSsn(out string ssn) //Validate social security number for new student //Not in use
         {
             while (true)
             {
@@ -63,7 +63,7 @@ namespace School_Labb3
                 }
             } 
         }
-        public void test()
+        public void test() //Test test test
         {
             using (var context = new SchoolContext())
             {

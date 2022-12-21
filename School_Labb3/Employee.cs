@@ -50,29 +50,29 @@ namespace School_Labb3
                 var showPosition = from p in context.Positions //Gets positions from database
                                    select p;
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(new string('-', 20));
+                Console.WriteLine(new string('-', 22));
                 Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("{0, -2} | {1, -13} |", "Id", "Position");
+                Console.WriteLine("| {0, -2} | {1, -13} |", "Id", "Position");
                 Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(new string('-', 20));
+                Console.WriteLine(new string('-', 22));
            
                 Console.ForegroundColor = ConsoleColor.Green;
                 foreach (var p in showPosition) //show position ID and position name
                 {
-                    Console.WriteLine("{0, -2} | {1, -13} |", p.PositionId, p.PositionName);
+                    Console.WriteLine("| {0, -2} | {1, -13} |", p.PositionId, p.PositionName);
                 }
-                Console.WriteLine(new string('-', 20));
+                Console.WriteLine(new string('-', 22));
                 Console.ResetColor();
             }
             Console.WriteLine();
             int getPosition = 0;
-            Console.WriteLine("Select position to view staff from. [1-5]");
+            Console.WriteLine("Select position to view staff from. [1-6]");
             while (true)//Check thats input is INT and between 1-5
             {
                 var positioninput = Console.ReadLine();
-                if (int.TryParse(positioninput, out getPosition) && getPosition >= 1 && getPosition <= 5)
+                if (int.TryParse(positioninput, out getPosition) && getPosition >= 1 && getPosition <= 6)
                 {
                     try
                     {
@@ -89,12 +89,22 @@ namespace School_Labb3
                             connection.Open();
                             cmd.Parameters.AddWithValue("@getPosition", getPosition); //get input value to sql-query
                             SqlDataReader sdr = cmd.ExecuteReader();
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine(new string('-', 36));
+                            Console.ResetColor();
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.WriteLine("| {0, -20} | {1, -9} |", "Name of employee", "Position");
+                            Console.ResetColor();
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine(new string('-', 36));
+
+                            Console.ForegroundColor = ConsoleColor.Green;
                             while (sdr.Read())
                             {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine($"{sdr["Staff"]} {sdr["Position"]}");
-                                Console.ResetColor();
+                                Console.WriteLine("| {0, -20} | {1, -9} |", sdr["Staff"], sdr["Position"]);
                             }
+                            Console.WriteLine(new string('-', 36));
+                            Console.ResetColor();
                             Console.WriteLine();
                             Console.WriteLine();
                             MoreInput();
@@ -130,7 +140,7 @@ namespace School_Labb3
                 Console.WriteLine("Done");
             }
         }
-        public void MoreInput( )
+        private void MoreInput( )
         {
             Menu menu = new Menu();
             Console.WriteLine("Do you want to search again? (Y/N)");
@@ -256,7 +266,7 @@ namespace School_Labb3
                 }
             }
         }
-        public void moreToAdd()
+        private void moreToAdd()
         {
             Menu menu = new Menu();
             Console.WriteLine("Are there more employees to be registered today? [Y/N]");
@@ -273,7 +283,7 @@ namespace School_Labb3
                 menu.SqlMenu();
             }
         }
-        public void RemoveStaff()
+        public void RemoveStaff() //Not in use
         {
             // Removes from database
             var context = new SchoolContext();

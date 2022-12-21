@@ -148,11 +148,11 @@ namespace School_Labb3
             //validate.ValidateSsn(out ssn);
 
             int newClassId;
-            Console.WriteLine("Select class: (1)A | (2)A | (3)B");
+            Console.WriteLine("Select class: (1)A | (2)A | (3)B | (4)A");
             while (true)
             {
                 var classid = Console.ReadLine();
-                if (int.TryParse(classid, out newClassId) && newClassId >= 1 && newClassId <= 3)
+                if (int.TryParse(classid, out newClassId) && newClassId >= 1 && newClassId <= 4)
                 {
                     break;
                 }

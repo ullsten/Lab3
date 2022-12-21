@@ -9,9 +9,8 @@ namespace School_Labb3
 {
     public class Update
     {
-        public void AgeUpdate()
-        {
-            //Update Age for last added student
+        public void AgeUpdate() //Update Age for last added student
+        { 
             string conUpdateAge = "Data Source=ULLSTENLENOVO; Initial Catalog=School;Integrated Security=True";
             using (SqlConnection updateAge = new SqlConnection(conUpdateAge))
             {
@@ -22,9 +21,8 @@ namespace School_Labb3
                 SqlDataReader sdr2 = cmdAge.ExecuteReader();
             }
         }
-        public void GenderUpdate()
+        public void GenderUpdate() //Update gender for last added student
         {
-            //Update gender for last added student
             string conUpdateSsn = "Data Source=ULLSTENLENOVO; Initial Catalog=School;Integrated Security=True";
             using (SqlConnection updateSsn = new SqlConnection(conUpdateSsn))
             {
