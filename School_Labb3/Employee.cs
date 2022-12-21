@@ -11,7 +11,7 @@ namespace School_Labb3
         {
            SqlConnection sqlcon = new SqlConnection(@"Data Source=ULLSTENLENOVO; Initial Catalog=School;Integrated Security=True");
             //Query bestämmer vilken data vill vi ha
-            SqlDataAdapter sqlDat = new SqlDataAdapter("SELECT CONCAT(FirstName,' ', LastName) AS Staff, PositionId, PositionName AS [Position] From StaffAdmin\r\n" +
+            SqlDataAdapter sqlDat = new SqlDataAdapter("SELECT StaffId, CONCAT(FirstName,' ', LastName) AS Staff, PositionId, PositionName AS [Position] From StaffAdmin\r\n" +
                 "Join Staff ON FK_StaffId=StaffId\r\n" +
                 "Join Position ON FK_PositionId=PositionId", sqlcon);
             //Tomt data table
@@ -30,7 +30,7 @@ namespace School_Labb3
             foreach (DataRow dr in dtTbl.Rows)
             {
                 Console.WriteLine("| {0, -2} | {1, -20} | {2, -9} |",
-                        dr["PositionId"], dr["Staff"], dr["Position"]);
+                        dr["StaffId"], dr["Staff"], dr["Position"]);
             }
             Console.WriteLine(new string('-', 41));
             Console.ResetColor();
